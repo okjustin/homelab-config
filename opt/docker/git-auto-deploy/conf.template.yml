@@ -1,0 +1,7 @@
+secret_token: ${GITHUB_WEBHOOK_SECRET}
+repositories:
+  - url: 'https://github.com/youruser/homelab-docker.git'
+    path: '/opt/docker'
+    post_pull:
+      - docker compose -f /opt/docker/traefik/docker-compose.yml up -d
+      - docker compose -f /opt/docker/git-auto-deploy/docker-compose.yml up -d
